@@ -23,4 +23,10 @@
 - WHEN I choose to add an employee
 - THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
 - WHEN I choose to update an employee role
-- THEN I am prompted to select an employee to update and their new role and this information is updated in the database
+- THEN I am prompted to select an employee to update and their new role and this information is updated in the database .
+
+## Database Schema
+
+<img width="948" alt="12-sql-" src="https://github.com/Stas-Cell-Max/employee-tracker-machine/assets/137020431/6d0112e8-c8a1-4850-8a87-8d3b78c826f7">
+
+
