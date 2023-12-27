@@ -30,3 +30,11 @@
 <img width="948" alt="12-sql-" src="https://github.com/Stas-Cell-Max/employee-tracker-machine/assets/137020431/6d0112e8-c8a1-4850-8a87-8d3b78c826f7">
 
 
+## Outline
+
+1. Project Setup
+2. Database Setup
+3. Application Functionality
+4. User Interaction with Inquirer
+5. Data Handling with MySQL
+6. Testing & Debugging
