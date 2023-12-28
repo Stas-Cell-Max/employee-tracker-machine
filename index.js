@@ -29,11 +29,48 @@ const mainMenuQuestions = require('./prompts/mainPrompts');
 
  // Define the viewAllDepartments function (as a placeholder for now)
 function viewAllDepartments() {
-    // This is where you'll add the code to interact with your database
     console.log('Viewing all departments...');
     // After completing the action, show the main menu again
     init();
-}         
+}     
+
+function viewAllRoles() {
+    console.log('Viewing all roles...');
+    // Database interaction here
+    init();
+}
+
+function viewAllEmployees() {
+    console.log('Viewing all employees...');
+    // Database interaction here
+    init();
+}
+
+function addDepartment() {
+    console.log('Adding a new department...');
+    // Database interaction here
+    init();
+}
+
+function addRole() {
+    console.log('Adding a new role...');
+    // Database interaction here
+    init();
+}
+
+function viewAllRoles() {
+    console.log('Viewing all roles...');
+    // Database interaction here
+    init();
+}
+
+
+
+function updateEmployeeRole() {
+    console.log('Updating an employee role...');
+    // Database interaction here
+    init();
+}
 
 // Define the exitApplication function
 function exitApplication() {
