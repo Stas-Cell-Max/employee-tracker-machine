@@ -1,8 +1,9 @@
+// Required packages and files for the application
 const inquirer = require('inquirer');
-const db = require('./db/connection'); // adjust the path as necessary
+const db = require('./db/connection'); 
 const mainMenuQuestions = require('./prompts/mainPrompts');
 
-// Define the handleUserChoice function outside of the init function
+// Function to handle user's menu choice
  function handleUserChoice(choice) {
     switch (choice) {
     case 'View all departments':
@@ -27,16 +28,16 @@ const mainMenuQuestions = require('./prompts/mainPrompts');
   }
 }
 
- // Define the viewAllDepartments function (as a placeholder for now)
+ // Function to display all departments from the database
 function viewAllDepartments() {
     console.log('Viewing all departments...');
-    
-    db.promise().query('SELECT * FROM departments')
+
+    db.promise().query('SELECT * FROM departments') // Query the database and display results
     .then(([rows]) => {
       console.table(rows);
     })
-    .catch(console.log)
-    .then(() => init());
+    .catch(console.log)   //Log any errors
+    .then(() => init());  // Return to main menu after action is complete
 }     
 
 function viewAllRoles() {
@@ -61,14 +62,15 @@ function viewAllEmployees() {
     .then(() => init());
 }
 
+// Function to add a new department
 function addDepartment() {
     console.log('Adding a new department...');
 
-    inquirer.prompt({
+    inquirer.prompt({   // Prompt user for new department name
     name: 'newDepartment',
     type: 'input',
     message: 'What is the name of the new department?',
-  }).then(answer => {
+  }).then(answer => {  // Insert new department into the database
     db.promise().query('INSERT INTO departments (name) VALUES (?)', [answer.newDepartment])
       .then(() => console.log(`Added ${answer.newDepartment} to the database`))
       .catch(console.log)
@@ -76,6 +78,7 @@ function addDepartment() {
   });
 }
 
+// Function to add a new role with prompts for role details
 function addRole() {
     console.log('Adding a new role...');
 
@@ -102,10 +105,9 @@ function addRole() {
             .catch(console.log)
             .then(() => init());
     });
-
-
 }
 
+// Function to add a new employee with prompts for their details
 function addEmployee() {
     console.log('Adding a new employee ...');
 
@@ -131,7 +133,7 @@ function addEmployee() {
             message: 'What is the employee\'s manager\'s ID (Enter 0 if no manager)?',
             default: 0, // Assumes that 0 is used for employees without a manager
       }  
-    ])..then(answers => {
+    ]).then(answers => {
         const { firstName, lastName, roleId, managerId } = answers;
         const query = 'INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)';
         const managerValue = managerId === 0 ? null : managerId; // Converts 0 to NULL for no manager
@@ -140,9 +142,9 @@ function addEmployee() {
             .catch(console.log)
             .then(() => init());
     });
-
 }
 
+// Function to update an existing employee's role
 function updateEmployeeRole() {
     console.log('Updating an employee role...');
    
@@ -167,7 +169,7 @@ function updateEmployeeRole() {
       });
 }
 
-// Define the exitApplication function
+// Function to exit the application
 function exitApplication() {
     console.log('Goodbye!');
     process.exit(); // This will close the application
@@ -176,8 +178,7 @@ function exitApplication() {
  // Initialize the application
 function init() {
     inquirer.prompt(mainMenuQuestions).then((answers) => {
-        // Call handleUserChoice with the user's choice
-        handleUserChoice(answers.action);
+        handleUserChoice(answers.action);  // Call handleUserChoice with the user's choice
     });
 }
 
