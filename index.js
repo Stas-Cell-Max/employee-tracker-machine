@@ -79,43 +79,89 @@ function addDepartment() {
 function addRole() {
     console.log('Adding a new role...');
 
-    inquirer.prompt({
-        name: 'newRole',
-        type: 'input',
-        message: 'What is the name of the new role?',
-      }).then(answer => {
-        db.promise().query('INSERT INTO roles (name) VALUES (?)', [answer.newRole])
-          .then(() => console.log(`Added ${answer.newRole} to the database`))
-          .catch(console.log)
-          .then(() => init());
-      });
+    inquirer.prompt([
+        {
+            name: 'title',
+            type: 'input',
+            message: 'What is the title of the new role?',
+        },
+        {
+            name: 'salary',
+            type: 'number',
+            message: 'What is the salary for this role?',
+        },
+        {
+            name: 'departmentId',
+            type: 'number',
+            message: 'What is the department ID for this role?',
+        }
+    ]).then(answers => {
+        const { title, salary, departmentId } = answers;
+        db.promise().query('INSERT INTO roles (title, salary, department_id) VALUES (?, ?, ?)', [title, salary, departmentId])
+            .then(() => console.log(`Added ${title} with salary ${salary} to department ${departmentId} in the database`))
+            .catch(console.log)
+            .then(() => init());
+    });
+
+
 }
 
 function addEmployee() {
     console.log('Adding a new employee ...');
 
-    inquirer.prompt({
-        name: 'newEmployee',
-        type: 'input',
-        message: 'What is the name of the new role?',
-      }).then(answer => {
-        db.promise().query('INSERT INTO employee (name) VALUES (?)', [answer.newEmployee])
-          .then(() => console.log(`Added ${answer.newEmployee} to the database`))
-          .catch(console.log)
-          .then(() => init());
-      });
+    inquirer.prompt([
+        {
+            name: 'firstName',
+            type: 'input',
+            message: 'What is the employee\'s first name?',
+        },
+        {
+            name: 'lastName',
+            type: 'input',
+            message: 'What is the employee\'s last name?',
+        },
+        {
+            name: 'roleId',
+            type: 'number',
+            message: 'What is the employee\'s role ID?',
+        },
+        {
+            name: 'managerId',
+            type: 'number',
+            message: 'What is the employee\'s manager\'s ID (Enter 0 if no manager)?',
+            default: 0, // Assumes that 0 is used for employees without a manager
+      }  
+    ])..then(answers => {
+        const { firstName, lastName, roleId, managerId } = answers;
+        const query = 'INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)';
+        const managerValue = managerId === 0 ? null : managerId; // Converts 0 to NULL for no manager
+        db.promise().query(query, [firstName, lastName, roleId, managerValue])
+            .then(() => console.log(`Added ${firstName} ${lastName} to the database`))
+            .catch(console.log)
+            .then(() => init());
+    });
+
 }
 
 function updateEmployeeRole() {
     console.log('Updating an employee role...');
    
-    inquirer.prompt({
-        name: 'newEmployeeRole',
-        type: 'input',
-        message: 'What is the name of the employee new role ?',
-      }).then(answer => {
-        db.promise().query('INSERT INTO employee role (name) VALUES (?)', [answer.newEmployeeRole])
-          .then(() => console.log(`Added ${answer.newEmployeeRole} to the database`))
+    inquirer.prompt([
+        {
+            name: 'employeeId',
+            type: 'number',
+            message: 'Enter the ID of the employee to update:',
+        },
+        {
+            name: 'newRoleId',
+            type: 'number',
+            message: 'Enter the new role ID:',
+        }
+
+      ]).then(answer => {
+        const { newRoleId, employeeId } = answer;
+        db.promise().query('UPDATE employees SET role_id = ? WHERE id = ?', [newRoleId, employeeId])
+          .then(() => console.log(`Updated employee's role in the database`))
           .catch(console.log)
           .then(() => init());
       });
