@@ -1,7 +1,7 @@
 // Required packages and files for the application
 const inquirer = require('inquirer');
-const db = require('./db/connection'); 
-const mainMenuQuestions = require('./prompts/mainPrompts');
+const db = require('./db/connection.js'); 
+const mainMenuQuestions = require('./prompts/mainPrompts.js');
 
 // Function to handle user's menu choice
  function handleUserChoice(choice) {
