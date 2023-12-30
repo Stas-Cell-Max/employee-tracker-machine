@@ -5,7 +5,9 @@ const mainMenuQuestions = require('./prompts/mainPrompts.js');
 
 // Function to handle user's menu choice
  function handleUserChoice(choice) {
-    switch (choice) {
+
+    // Determine the action based on the user's choice
+    switch (choice) {  
     case 'View all departments':
         return viewAllDepartments();
     // Add more cases as per need
@@ -24,7 +26,8 @@ const mainMenuQuestions = require('./prompts/mainPrompts.js');
     case 'Exit':
         return exitApplication();
     default:
-    console.log('Invalid choice!');        
+    console.log('Invalid choice!'); 
+    init(); // Re-display the menu if the choice is invalid       
   }
 }
 
@@ -187,6 +190,7 @@ function exitApplication() {
 
  // Initialize the application
 function init() {
+    // Display the main menu and handle the user's choice
     inquirer.prompt(mainMenuQuestions).then((answers) => {
         handleUserChoice(answers.action);  // Call handleUserChoice with the user's choice
     });
