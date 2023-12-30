@@ -70,7 +70,9 @@ function addDepartment() {
     name: 'newDepartment',
     type: 'input',
     message: 'What is the name of the new department?',
-  }).then(answer => {  // Insert new department into the database
+    validate: input => input.trim() !== '' ? true : 'This field cannot be empty. Please enter a department name.'
+  })
+  .then(answer => {  // Insert new department into the database
     db.promise().query('INSERT INTO departments (name) VALUES (?)', [answer.newDepartment])
       .then(() => console.log(`Added ${answer.newDepartment} to the database`))
       .catch(console.log)
@@ -93,12 +95,14 @@ function addRole() {
             type: 'number',
             message: 'What is the salary for this role?',
         },
+        ,
         {
             name: 'departmentId',
             type: 'number',
             message: 'What is the department ID for this role?',
-        }
-    ]).then(answers => {
+        }   
+    ])
+    .then(answers => {
         const { title, salary, departmentId } = answers;
         db.promise().query('INSERT INTO roles (title, salary, department_id) VALUES (?, ?, ?)', [title, salary, departmentId])
             .then(() => console.log(`Added ${title} with salary ${salary} to department ${departmentId} in the database`))
@@ -132,8 +136,14 @@ function addEmployee() {
             type: 'number',
             message: 'What is the employee\'s manager\'s ID (Enter 0 if no manager)?',
             default: 0, // Assumes that 0 is used for employees without a manager
-      }  
-    ]).then(answers => {
+      validate: input => {
+        if(input.trim() === '0') return true; // Allow '0' as a special case
+        const parsed = parseInt(input);
+        return !isNaN(parsed) && parsed > 0 ? true : 'Please enter a valid ID (a positive integer) or 0 for no manager.';
+      } 
+    }
+    ])
+    .then(answers => {
         const { firstName, lastName, roleId, managerId } = answers;
         const query = 'INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)';
         const managerValue = managerId === 0 ? null : managerId; // Converts 0 to NULL for no manager
@@ -159,8 +169,8 @@ function updateEmployeeRole() {
             type: 'number',
             message: 'Enter the new role ID:',
         }
-
-      ]).then(answer => {
+      ])
+      .then(answer => {
         const { newRoleId, employeeId } = answer;
         db.promise().query('UPDATE employees SET role_id = ? WHERE id = ?', [newRoleId, employeeId])
           .then(() => console.log(`Updated employee's role in the database`))
