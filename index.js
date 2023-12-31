@@ -14,22 +14,22 @@ const { viewAllEmployees, addEmployee, updateEmployeeRole } = require('./modules
     // Determine the action based on the user's choice
     switch (choice) {  
     case 'View all departments':
-        return viewAllDepartments();
+        return viewAllDepartments(init);
     // Add more cases as per need
     case 'View all roles':
-        return viewAllRoles();
+        return viewAllRoles(init);
     case 'View all employees':
-        return viewAllEmployees();
+        return viewAllEmployees(init);
     case 'Add a department':
-        return addDepartment();
+        return addDepartment(init);
     case 'Add a role':
-        return addRole();
+        return addRole(init);
     case 'Add an employee':
-        return addEmployee();
+        return addEmployee(init);
     case 'Update an employee role':
-        return updateEmployeeRole();
+        return updateEmployeeRole(init);
     case 'Exit':
-        return exitApplication();
+        return exitApplication(init);
     default:
     console.log('Invalid choice!'); 
     init(); // Re-display the menu if the choice is invalid       

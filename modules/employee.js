@@ -39,11 +39,16 @@ function addEmployee(returnToMainMenu) {
             message: 'What is the employee\'s manager\'s ID (Enter 0 if no manager)?',
             default: 0, // Assumes that 0 is used for employees without a manager
       validate: input => {
-        if(input.trim() === '0') return true; // Allow '0' as a special case
-        const parsed = parseInt(input);
-        return !isNaN(parsed) && parsed > 0 ? true : 'Please enter a valid ID (a positive integer) or 0 for no manager.';
-      } 
+        // Ensure the input is treated as a string
+        const strInput = input.toString().trim();
+        // Allow '0' as a special case or check if it's a positive integer
+        if(strInput === '0' || (!isNaN(input) && input > 0)) {
+            return true;
+        } else {
+            return 'Please enter a valid ID (a positive integer) or 0 for no manager.';
+        }
     }
+}
     ])
     .then(answers => {
         const { firstName, lastName, roleId, managerId } = answers;
