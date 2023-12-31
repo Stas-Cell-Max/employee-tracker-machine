@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Tracker Machine Dashboard</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+    <!-- Dashboard Overview -->
+    <header>
+        <h1>Employee Tracker Machine Dashboard</h1>
+        <!-- Navigation Menu -->
+        <nav>
+            <ul>
+                <li><a href="#departments">Departments</a></li>
+                <li><a href="#roles">Roles</a></li>
+                <li><a href="#employees">Employees</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Department Section -->
+        <section id="departments">
+            <h2>Departments</h2>
+            <!-- List View -->
+            <div>
+                <!-- Departments will be listed here -->
+                <!-- Options to add, edit, or delete -->
+            </div>
+            <!-- Detail View -->
+            <div>
+                <!-- Details for a selected department will be shown here -->
+            </div>
+        </section>
+
+        <!-- Roles Section -->
+        <section id="roles">
+            <h2>Roles</h2>
+            <!-- List View -->
+            <div>
+                <!-- Roles will be listed here -->
+                <!-- Options to edit or delete -->
+            </div>
+            <!-- Add Role Form -->
+            <form>
+                <label for="title">Role Title:</label>
+                <input type="text" id="title" name="title">
+                <!-- Add fields for salary and department -->
+                <input type="submit" value="Add Role">
+            </form>
+        </section>
+
+        <!-- Employees Section -->
+        <section id="employees">
+            <h2>Employees</h2>
+            <!-- List View -->
+            <div>
+                <!-- Employees will be listed here -->
+                <!-- Options to edit or remove -->
+            </div>
+            <!-- Employee Profile -->
+            <div>
+                <!-- Detailed profile for a selected employee -->
+            </div>
+        </section>
+
+        <!-- Interactive Forms -->
+        <section>
+            <h2>Manage Data</h2>
+            <!-- Add/Edit Forms -->
+            <form>
+                <!-- Add forms for adding or editing departments, roles, and employees -->
+            </form>
+            <!-- Search Functionality -->
+            <form>
+                <label for="search">Search:</label>
+                <input type="text" id="search" name="search">
+                <input type="submit" value="Find">
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Employee Tracker Machine Dashboard</p>
+    </footer>
+
+    <script src="/index.js"></script>
+
+</body>
+
+</html>
