@@ -3,9 +3,10 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f4f4f4;
+    background-color: #8cdad6;
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
 /* Header styles */
@@ -40,7 +41,7 @@ main {
 /* Footer styles */
 footer {
     background: #333;
-    color: white;
+    color: rgb(61, 131, 125);
     text-align: center;
     padding: 10px 0;
     position: absolute;

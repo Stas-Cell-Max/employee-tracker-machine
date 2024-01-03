@@ -86,9 +86,56 @@ function updateEmployeeRole(returnToMainMenu) {
       });
 }
 
+// Function to update an existing employee's manager
+function updateEmployeeManager(returnToMainMenu) {
+    console.log('Updating an employee\'s manager...');
+
+    // Step 2: Fetch Employees
+    db.promise().query('SELECT id, CONCAT(first_name, " ", last_name) AS name FROM employees')
+    .then(([employees]) => {
+        //Prompt to Select an Employee
+        return inquirer.prompt([
+            {
+                name: 'employeeId',
+                type: 'list',
+                choices: employees.map(emp => ({ name: emp.name, value: emp.id })),
+                message: 'Which employee\'s manager do you want to update?',
+            }
+        ])
+        .then(answer => {
+            const employeeId = answer.employeeId;
+            // Step 4: Fetch Potential Managers
+            return db.promise().query('SELECT id, CONCAT(first_name, " ", last_name) AS name FROM employees WHERE id <> ?', [employeeId])
+            .then(([managers]) => {
+                //Prompt to Select a New Manager
+                return inquirer.prompt([
+                    {
+                        name: 'managerId',
+                        type: 'list',
+                        choices: [{ name: 'No Manager', value: null }].concat(managers.map(mgr => ({ name: mgr.name, value: mgr.id }))),
+                        message: 'Who is the new manager?',
+                    }
+                ])
+                .then(answer => ({ employeeId, managerId: answer.managerId }));
+            });
+        });
+    })
+    .then(({ employeeId, managerId }) => {
+        // Update the Employee's Manager in the Database
+        return db.promise().query('UPDATE employees SET manager_id = ? WHERE id = ?', [managerId, employeeId]);
+    })
+    .then(() => {
+        console.log('Employee\'s manager updated successfully.');
+    })
+    .catch(console.log)
+    .then(() => returnToMainMenu());
+}
+
+
 //Exporting function to index.js
 module.exports = {
     viewAllEmployees,
     addEmployee,
-    updateEmployeeRole
+    updateEmployeeRole,
+    updateEmployeeManager
 };

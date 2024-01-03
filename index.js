@@ -7,6 +7,8 @@ const mainMenuQuestions = require('./prompts/mainPrompts.js');
 const { viewAllDepartments, addDepartment } = require('./modules/department.js');
 const { viewAllRoles, addRole } = require('./modules/role.js');
 const { viewAllEmployees, addEmployee, updateEmployeeRole } = require('./modules/employee.js');
+const { updateEmployeeManager } = require('./modules/employee'); // Import at the top
+
 
 // Function to handle user's menu choice
  function handleUserChoice(choice) {
@@ -28,6 +30,8 @@ const { viewAllEmployees, addEmployee, updateEmployeeRole } = require('./modules
         return addEmployee(init);
     case 'Update an employee role':
         return updateEmployeeRole(init);
+    case 'Update employee manager':
+        return updateEmployeeManager(init);
     case 'Exit':
         return exitApplication(init);
     default:
