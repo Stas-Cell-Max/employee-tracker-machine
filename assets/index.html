@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +7,6 @@
     <title>Employee Tracker Machine Dashboard</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
     <!-- Dashboard Overview -->
     <header>
@@ -19,6 +17,7 @@
                 <li><a href="#departments">Departments</a></li>
                 <li><a href="#roles">Roles</a></li>
                 <li><a href="#employees">Employees</a></li>
+                <!-- Add more navigation items for additional functionalities -->
             </ul>
         </nav>
     </header>
@@ -28,12 +27,11 @@
         <section id="departments">
             <h2>Departments</h2>
             <!-- List View -->
-            <div>
-                <!-- Departments will be listed here -->
-                <!-- Options to add, edit, or delete -->
+            <div id="departmentList">
+                <!-- Interactive list of departments will be generated here -->
             </div>
             <!-- Detail View -->
-            <div>
+            <div id="departmentDetails">
                 <!-- Details for a selected department will be shown here -->
             </div>
         </section>
@@ -41,47 +39,36 @@
         <!-- Roles Section -->
         <section id="roles">
             <h2>Roles</h2>
-            <!-- List View -->
-            <div>
-                <!-- Roles will be listed here -->
-                <!-- Options to edit or delete -->
-            </div>
-            <!-- Add Role Form -->
-            <form>
-                <label for="title">Role Title:</label>
-                <input type="text" id="title" name="title">
-                <!-- Add fields for salary and department -->
-                <input type="submit" value="Add Role">
-            </form>
+            <!-- Add interactive list and forms for roles -->
         </section>
 
         <!-- Employees Section -->
         <section id="employees">
             <h2>Employees</h2>
-            <!-- List View -->
-            <div>
-                <!-- Employees will be listed here -->
-                <!-- Options to edit or remove -->
-            </div>
-            <!-- Employee Profile -->
-            <div>
-                <!-- Detailed profile for a selected employee -->
-            </div>
+            <!-- Add interactive list and profile views for employees -->
         </section>
 
-        <!-- Interactive Forms -->
-        <section>
+        <!-- Manager and Department Views -->
+        <section id="managers">
+            <h2>View by Manager</h2>
+            <!-- Add functionality to view employees by manager -->
+        </section>
+
+        <section id="dept-employees">
+            <h2>View by Department</h2>
+            <!-- Add functionality to view employees by department -->
+        </section>
+
+        <!-- Manage Data Section -->
+        <section id="manage-data">
             <h2>Manage Data</h2>
-            <!-- Add/Edit Forms -->
-            <form>
-                <!-- Add forms for adding or editing departments, roles, and employees -->
-            </form>
-            <!-- Search Functionality -->
-            <form>
-                <label for="search">Search:</label>
-                <input type="text" id="search" name="search">
-                <input type="submit" value="Find">
-            </form>
+            <!-- Add forms and options for adding, updating, and deleting records -->
+        </section>
+
+        <!-- Search Functionality -->
+        <section id="search">
+            <h2>Search</h2>
+            <!-- Enhance search functionality for comprehensive search and filter -->
         </section>
     </main>
 
@@ -92,5 +79,4 @@
     <script src="/index.js"></script>
 
 </body>
-
 </html>

@@ -69,6 +69,7 @@ Developing the Employee Tracker application was made possible with the help of v
 
 ## Deployment
 
+GitHub URL: https://github.com/Stas-Cell-Max/employee-tracker-machine.git
 
 
 ## Author
