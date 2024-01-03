@@ -197,6 +197,38 @@ function updateEmployeeManager(returnToMainMenu) {
     .then(() => returnToMainMenu());
 }
 
+// Function to delete an employee
+function deleteEmployee(returnToMainMenu) {
+    console.log('Deleting an employee...');
+
+    // Fetch Employees
+    db.promise().query('SELECT id, CONCAT(first_name, " ", last_name) AS name FROM employees')
+    .then(([employees]) => {
+        // Prompt to Select an Employee to Delete
+        return inquirer.prompt([
+            {
+                name: 'employeeId',
+                type: 'list',
+                choices: employees.map(emp => ({ name: emp.name, value: emp.id })),
+                message: 'Select an employee to delete:',
+            }
+        ])
+        .then(answer => {
+            const employeeId = answer.employeeId;
+            // Delete the Selected Employee
+            return db.promise().query('DELETE FROM employees WHERE id = ?', [employeeId])
+            .then(() => {
+                console.log(`Employee deleted successfully.`);
+            });
+        });
+    })
+    .catch(console.log)
+    .then(() => returnToMainMenu());
+}
+
+
+
+
 
 
 
@@ -209,5 +241,5 @@ module.exports = {
     addEmployee,
     updateEmployeeRole,
     updateEmployeeManager,
-    
+    deleteEmployee  
 };

@@ -43,8 +43,41 @@ function addRole(returnToMainMenu) {
     });
 }
 
+// Function to add a role 
+function deleteRole(returnToMainMenu) {
+    console.log('Deleting a role...');
+
+    // Fetch Roles
+    db.promise().query('SELECT id, title FROM roles')
+    .then(([roles]) => {
+        // Prompt to Select a Role to Delete
+        return inquirer.prompt([
+            {
+                name: 'roleId',
+                type: 'list',
+                choices: roles.map(role => ({ name: role.title, value: role.id })),
+                message: 'Select a role to delete:',
+            }
+        ])
+        .then(answer => {
+            const roleId = answer.roleId;
+            // Delete the Selected Role
+            return db.promise().query('DELETE FROM roles WHERE id = ?', [roleId])
+            .then(() => {
+                console.log(`Role deleted successfully.`);
+            });
+        });
+    })
+    .catch(console.log)
+    .then(() => returnToMainMenu());
+}
+
+
+
+
 //Exporting function to index.js
 module.exports = {
     viewAllRoles,
-    addRole
+    addRole,
+    deleteRole
 };

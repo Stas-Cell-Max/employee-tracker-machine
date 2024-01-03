@@ -31,8 +31,41 @@ function addDepartment(returnToMainMenu) {
   });
 }
 
+// Function to delete a department
+function deleteDepartment(returnToMainMenu) {
+  console.log('Deleting a department...');
+
+  // Fetch Departments
+  db.promise().query('SELECT id, name FROM departments')
+  .then(([departments]) => {
+      // Prompt to Select a Department to Delete
+      return inquirer.prompt([
+          {
+              name: 'departmentId',
+              type: 'list',
+              choices: departments.map(dept => ({ name: dept.name, value: dept.id })),
+              message: 'Select a department to delete:',
+          }
+      ])
+      .then(answer => {
+          const departmentId = answer.departmentId;
+          // Delete the Selected Department
+          return db.promise().query('DELETE FROM departments WHERE id = ?', [departmentId])
+          .then(() => {
+              console.log(`Department deleted successfully.`);
+          });
+      });
+  })
+  .catch(console.log)
+  .then(() => returnToMainMenu());
+}
+
+
+
+
 //Exporting function to index.js
 module.exports = {
     viewAllDepartments,
-    addDepartment
+    addDepartment,
+    deleteDepartment
 };
