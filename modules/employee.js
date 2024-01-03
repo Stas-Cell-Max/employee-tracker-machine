@@ -13,6 +13,72 @@ function viewAllEmployees(returnToMainMenu) {
     .then(() => returnToMainMenu());
 }
 
+// Function to display an employees by manager
+function viewEmployeesByManager(returnToMainMenu) {
+    console.log('Viewing employees by manager...');
+
+    // Fetch Managers
+    db.promise().query('SELECT id, CONCAT(first_name, " ", last_name) AS name FROM employees WHERE manager_id IS NULL')
+    .then(([managers]) => {
+        // Prompt to Select a Manager
+        return inquirer.prompt([
+            {
+                name: 'managerId',
+                type: 'list',
+                choices: managers.map(mgr => ({ name: mgr.name, value: mgr.id })),
+                message: 'Select a manager to view their employees:',
+            }
+        ])
+        .then(answer => {
+            const managerId = answer.managerId;
+            // Fetch and Display Employees for the Selected Manager
+            return db.promise().query('SELECT id, CONCAT(first_name, " ", last_name) AS name FROM employees WHERE manager_id = ?', [managerId])
+            .then(([employees]) => {
+                console.table(employees);
+            });
+        });
+    })
+    .catch(console.log)
+    .then(() => returnToMainMenu());
+}
+
+//Function to display employees by department
+function viewEmployeesByDepartment(returnToMainMenu) {
+    console.log('Viewing employees by department...');
+
+    // Fetch Departments
+    db.promise().query('SELECT id, name FROM departments')
+    .then(([departments]) => {
+        // Prompt to Select a Department
+        return inquirer.prompt([
+            {
+                name: 'departmentId',
+                type: 'list',
+                choices: departments.map(dept => ({ name: dept.name, value: dept.id })),
+                message: 'Select a department to view its employees:',
+            }
+        ])
+        .then(answer => {
+            const departmentId = answer.departmentId;
+            // Fetch and Display Employees for the Selected Department
+            const query = `
+                SELECT employees.id, CONCAT(employees.first_name, ' ', employees.last_name) AS employee_name, roles.title
+                FROM employees
+                JOIN roles ON employees.role_id = roles.id
+                JOIN departments ON roles.department_id = departments.id
+                WHERE departments.id = ?;
+            `;
+            return db.promise().query(query, [departmentId])
+            .then(([employees]) => {
+                console.log(`Employees in the ${departments.find(dept => dept.id === departmentId).name} Department:`);
+                console.table(employees);
+            });
+        });
+    })
+    .catch(console.log)
+    .then(() => returnToMainMenu());
+}
+
 // Function to add a new employee with prompts for their details
 function addEmployee(returnToMainMenu) {
     console.log('Adding a new employee ...');
@@ -90,7 +156,7 @@ function updateEmployeeRole(returnToMainMenu) {
 function updateEmployeeManager(returnToMainMenu) {
     console.log('Updating an employee\'s manager...');
 
-    // Step 2: Fetch Employees
+    // Fetch Employees
     db.promise().query('SELECT id, CONCAT(first_name, " ", last_name) AS name FROM employees')
     .then(([employees]) => {
         //Prompt to Select an Employee
@@ -104,7 +170,7 @@ function updateEmployeeManager(returnToMainMenu) {
         ])
         .then(answer => {
             const employeeId = answer.employeeId;
-            // Step 4: Fetch Potential Managers
+            //Fetch Potential Managers
             return db.promise().query('SELECT id, CONCAT(first_name, " ", last_name) AS name FROM employees WHERE id <> ?', [employeeId])
             .then(([managers]) => {
                 //Prompt to Select a New Manager
@@ -132,10 +198,16 @@ function updateEmployeeManager(returnToMainMenu) {
 }
 
 
+
+
+
 //Exporting function to index.js
 module.exports = {
     viewAllEmployees,
+    viewEmployeesByManager, 
+    viewEmployeesByDepartment,
     addEmployee,
     updateEmployeeRole,
-    updateEmployeeManager
+    updateEmployeeManager,
+    
 };

@@ -6,8 +6,10 @@ const mainMenuQuestions = require('./prompts/mainPrompts.js');
 // Imported functions from modules
 const { viewAllDepartments, addDepartment } = require('./modules/department.js');
 const { viewAllRoles, addRole } = require('./modules/role.js');
-const { viewAllEmployees, addEmployee, updateEmployeeRole } = require('./modules/employee.js');
-const { updateEmployeeManager } = require('./modules/employee'); // Import at the top
+const { viewAllEmployees, viewEmployeesByManager,viewEmployeesByDepartment, addEmployee, updateEmployeeRole, updateEmployeeManager } = require('./modules/employee.js');
+
+
+
 
 
 // Function to handle user's menu choice
@@ -22,7 +24,11 @@ const { updateEmployeeManager } = require('./modules/employee'); // Import at th
         return viewAllRoles(init);
     case 'View all employees':
         return viewAllEmployees(init);
-    case 'Add a department':
+    case 'View employees by manager':
+        return viewEmployeesByManager(init);  
+    case 'View employees by department':
+        return viewEmployeesByDepartment(init);   
+    case 'Add a department':   
         return addDepartment(init);
     case 'Add a role':
         return addRole(init);
