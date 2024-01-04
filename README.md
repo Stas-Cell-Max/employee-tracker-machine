@@ -56,15 +56,23 @@ Contributions to Employee Tracker are welcome! If you have suggestions for impro
 
 Developing the Employee Tracker application was made possible with the help of various resources and communities. Gratefully for the knowledge shared by the following:
 
-- Node.js Documentation: For in-depth understanding and reference on Node.js functions and modules. Visit Node.js Docs
+- Node.js Documentation: For in-depth understanding and reference on Node.js functions and modules. 
+
+- https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/development_environment
 
 - MySQL2 NPM Package: The official documentation helped with understanding how to use MySQL with Node.js. Visit MySQL2 NPM
+
+- https://www.w3schools.com/sql/sql_join.asp
+
+- https://www.youtube.com/watch?v=7S_tz1z_5bA&t=7035s
 
 - Inquirer.js GitHub Repository: Provided great insights into creating interactive command-line user interfaces. Visit Inquirer.js on GitHub
 
 - Stack Overflow: Community-contributed solutions and discussions on a wide range of technical challenges faced during development. Visit Stack Overflow
 
-- MDN Web Docs: For general web development knowledge and specific JavaScript syntax and methods. Visit MDN Web Docs
+- MDN Web Docs: For general web development knowledge and specific JavaScript syntax and methods. https://developer.mozilla.org/en-US/docs/Web/JavaScript
+
+- https://www.geeksforgeeks.org/nodejs/?ref=shm
 
 
 ## Deployment
