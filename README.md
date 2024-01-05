@@ -4,6 +4,7 @@
 Employee Tracker is a command-line application designed to help business owners manage and organize their company's workforce efficiently. This dynamic application allows users to interact with a database to view and manage the departments, roles, and employees in their company. With a user-friendly interface and powerful behind-the-scenes technology, Employee Tracker simplifies the complexities of employee management.
 
 ## Table of Contents
+    - [Toolbox](#toolbox)
     - [Demo](#demo)
     - [Installation](#installation)
     - [Usage](#usage)
@@ -15,6 +16,15 @@ Employee Tracker is a command-line application designed to help business owners 
     - [Deployment](#deployment)
     - [Author](#author)
     - [Contacts](#contacts)
+
+## Toolbox
+
+Several tools and technologies have been utilized, each contributing to different aspects of the project.
+ - HTML/CSS/JavaScript
+ - Node.js
+ - MySQL & MySQL2 Package
+ - Inquirer.js
+ - Express.js
 
 ## Demo
 
@@ -32,7 +42,7 @@ Explore Employee Tracker's capabilities: view departments, manage roles, and org
 ## Usage
 
 - Start the Application: Run node index.js in your terminal to launch Employee Tracker.
-- Navigate the Menu: Use arrow keys to navigate through options like viewing departments,      roles, and employees.
+- Navigate the Menu: Use arrow keys to navigate through options like viewing departments, roles, and employees.
 - Perform Actions: Select an option to add or update information, and follow the prompts to enter details.
 - Exit Gracefully: Choose 'Exit' from the main menu when you're finished to close the application safely.
 
@@ -46,7 +56,9 @@ To test the Employee Tracker application, ensure you have all dependencies insta
 
 ## Walkthrough Video
 
-Access the link and watch this walkthrough video for a quick demonstration of the Employee Tracker's features and how to navigate the application.
+Access the link and watch this walkthrough video for a quick demonstration of the Employee Tracker's features and how to navigate the application:
+
+https://drive.google.com/file/d/1W-tQ2v9MAb1bz9lKQCkSbWXvX2I0oOPl/view
 
 ## Contributing
 
