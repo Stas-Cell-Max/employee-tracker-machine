@@ -48,21 +48,21 @@ Explore Employee Tracker's capabilities: view departments, manage roles, and org
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE.md file for details.
+- This project is licensed under the MIT License - see the LICENSE.md file for details.
 
 ## Tests
 
-To test the Employee Tracker application, ensure you have all dependencies installed. Run npm test in your terminal. This will execute predefined tests designed to validate the functionality of each module. Ensure your MySQL server is running, as the tests may interact with your database.
+- To test the Employee Tracker application, ensure you have all dependencies installed. Run npm test in your terminal. This will execute predefined tests designed to validate the functionality of each module. Ensure your MySQL server is running, as the tests may interact with your database.
 
 ## Walkthrough Video
 
-Access the link and watch this walkthrough video for a quick demonstration of the Employee Tracker's features and how to navigate the application:
+- Access the link and watch this walkthrough video for a quick demonstration of the Employee Tracker's features and how to navigate the application:
 
 https://drive.google.com/file/d/1W-tQ2v9MAb1bz9lKQCkSbWXvX2I0oOPl/view
 
 ## Contributing
 
-Contributions to Employee Tracker are welcome! If you have suggestions for improvement or bug fixes, please open an issue or submit a pull request. Ensure your code adheres to the existing style for consistency. Thank you for your interest in enhancing this employee management tool.
+- Contributions to Employee Tracker are welcome! If you have suggestions for improvement or bug fixes, please open an issue or submit a pull request. Ensure your code adheres to the existing style for consistency. Thank you for your interest in enhancing this employee management tool.
 
 ## References
 
@@ -89,15 +89,15 @@ Developing the Employee Tracker application was made possible with the help of v
 
 ## Deployment
 
-GitHub URL: https://github.com/Stas-Cell-Max/employee-tracker-machine.git
+- GitHub URL: https://github.com/Stas-Cell-Max/employee-tracker-machine.git
 
 
 ## Author
 
-: Developed by [Stanislav Morozan], a passionate developer committed to creating efficient and user-friendly software solutions.
+- Developed by Stanislav Morozan, a passionate developer committed to creating efficient and user-friendly software solutions.
 
 ## Contacts
 
-Email: stasma.sm17@gmail.com
-GitHub: https://github.com/Stas-Cell-Max
-LinkedIn: https://www.linkedin.com/in/stanislavmorozan/
+- Email: stasma.sm17@gmail.com
+- GitHub: https://github.com/Stas-Cell-Max
+- LinkedIn: https://www.linkedin.com/in/stanislavmorozan/
