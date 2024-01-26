@@ -37,7 +37,7 @@ Explore Employee Tracker's capabilities: view departments, manage roles, and org
 - Install dependencies: Node.js, Inquirer, MySQL2
 - Set up your database using MySQL Workbench or the MySQL command-line tool.
 - Start the application: node index.js
-- 
+
 
 ## Usage
 
